@@ -1,69 +1,71 @@
 
-# 🧠 CRM Analytics: Customer Segmentation & CLV Prediction
+# Customer Segmentation & Lifetime Value Prediction Using CRM Analytics
 
-This repository presents a full-scale Customer Relationship Management (CRM) analytics pipeline focused on customer segmentation and lifetime value prediction using historical e-commerce data.
+## Objective
 
-## 📈 Project Overview
+The goal of this project is to develop a robust customer segmentation strategy and estimate Customer Lifetime Value (CLV) using historical retail transaction data. By analyzing customer behavior with RFM metrics and predictive modeling, we aim to uncover insights that support marketing decisions and long-term business planning.
 
-The project analyzes an online retail dataset containing over 500,000 transactions to:
+## Dataset Overview
 
-- Identify distinct customer segments using **RFM (Recency, Frequency, Monetary)** analysis.
-- Predict **Customer Lifetime Value (CLV)** using **BG/NBD** and **Gamma-Gamma** probabilistic models.
-- Provide actionable insights for customer retention and marketing strategy.
+The dataset used in this project is an online retail dataset consisting of over 500,000 transactions from a UK-based e-commerce store between 2010 and 2011. It includes transaction details such as:
 
-## 🔍 Key Features
+- Invoice number
+- Product description
+- Quantity
+- Price
+- Customer ID
+- Invoice date
 
-- 📊 **RFM-Based Segmentation**: Classifies customers into segments like "Champions", "At Risk", "Loyal", and "Hibernating".
-- 🔁 **CLV Prediction**: Uses `lifetimes` library to forecast purchase behavior and monetary value.
-- ⏳ **1, 6, and 12-Month CLV Forecasts**: Helps with long-term business planning.
-- 🌐 **Data Visualizations**: Bar plots, treemaps, and segmentation summaries for clear insights.
-- 💡 **Key Finding**: Customers in Segment A show a cumulative CLV of ~$400K and average expected profit of ~$690 per transaction.
+## Features Used
 
-## 🛠️ Technologies Used
+- InvoiceDate – Date and time of the transaction  
+- Customer ID – Unique identifier for each customer  
+- Quantity – Number of units purchased  
+- Price – Price per unit of the product  
+- TotalPrice – Computed as Quantity × Price  
+- RFM Metrics –  
+  - Recency: Days since last purchase  
+  - Frequency: Number of transactions  
+  - Monetary: Total spending
 
-- Python
-- Pandas, NumPy
-- Matplotlib, Seaborn, Squarify
-- Lifetimes (BG/NBD & Gamma-Gamma models)
-- SQLAlchemy
-- Scikit-learn (MinMaxScaler)
+## Methodology
 
-## 📁 Dataset
+The project follows a structured analytics pipeline:
 
-The dataset used is a historical online retail dataset for the years 2010–2011. It contains fields like Invoice ID, Product Description, Quantity, Price, Customer ID, and Invoice Date.
+### 1. Data Preparation
+- Removed cancelled orders and missing values
+- Handled outliers in quantity and price
+- Created TotalPrice and converted dates appropriately
 
-> **Note**: The dataset is not included in the repository due to size/privacy constraints. You may request it or use a similar public dataset for testing.
+### 2. Customer Segmentation (RFM Analysis)
+- Calculated Recency, Frequency, and Monetary scores
+- Created composite RFM scores and labeled customer segments (e.g., Champions, At Risk, Loyal)
+- Visualized customer segments using bar plots and treemaps
 
-## 📌 How to Run
+### 3. Customer Lifetime Value (CLV) Modeling
+- Applied BG/NBD model to estimate purchase frequency
+- Used Gamma-Gamma model to estimate average profit per customer
+- Predicted CLV over 1, 6, and 12 months
+- Normalized and segmented customers by CLV (Segments A to D)
 
-1. Clone the repo:
-```bash
-git clone https://github.com/yourusername/crm-analytics.git
-cd crm-analytics
-```
+## Summary of Findings
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+- Segment A customers showed the highest lifetime value (~$400,000 cumulative CLV)
+- Average expected profit for top-tier customers was approximately $690 per transaction
+- RFM and CLV modeling effectively highlighted high-value and at-risk customer groups
+- Treemap and bar visualizations provided actionable insights into customer composition
 
-3. Run the notebook or script:
-```bash
-jupyter notebook CRM_Analytics.ipynb
-# or
-python CRM Analytics.py
-```
+## Tools & Libraries
 
-## 🤝 Contributing
+- Python  
+- Pandas, NumPy – Data manipulation  
+- Seaborn, Matplotlib, Squarify – Visualization  
+- Lifetimes – CLV prediction using BG/NBD and Gamma-Gamma models  
+- Scikit-learn – Normalization (MinMaxScaler)
 
-Feel free to fork the repository and submit pull requests for improvements or new features!
+## Business Value
 
-## 📜 License
-
-This project is open source under the [MIT License](LICENSE).
-
----
-
-### 🚀 Developed by [Your Name]
-
-For questions or collaborations, feel free to open an issue or connect via [LinkedIn](https://linkedin.com/in/your-profile)
+This analytics framework enables businesses to:
+- Tailor retention and loyalty campaigns to high-value customers
+- Optimize resource allocation for marketing
+- Predict revenue from different customer segments
